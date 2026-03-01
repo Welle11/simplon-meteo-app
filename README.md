@@ -1,46 +1,67 @@
-# Weather App
+# Projet Météo - Simplon Nantes
 
-Check the current weather on any city on the planet. Switch between metric and imperial units.
+Ce projet est une adaptation de l'application [madzadev/weather-app](https://github.com/madzadev/weather-app). L'objectif était de transformer une application météo grand public en une solution d'affichage fixe pour les véhicules de transport en commun.
 
-![Alt img](https://images.ctfassets.net/zlsyc9paq6sa/3uBrJ07WSM40FpolgjInHY/7d886cb4187b52194bf9b63c183a1d3a/1627637330_x.gif)
+## Modifications réalisées
 
-## Features
+Pour répondre aux besoins de l'entreprise de transport, j'ai effectué les changements suivants :
 
-1. User's ability to search cities
-
-2. Current local time and date
-
-3. Temperatures and humidity
-
-4. Wind speed and direction
-
-5. Sunrise and sunset times
-
-6. Metric vs Imperial system
-
-7. Error handling and loading info
+- **Changement d'API** : Passage d'OpenWeatherMap à Open-Meteo (plus simple car sans clé API)
+- **Fixation de la ville** : Suppression du moteur de recherche pour un affichage fixe basé sur un fichier `config.json`
+- **Automatisation** : Ajout d'un rafraîchissement automatique des données toutes les heures
+- **Fichier de config** : Création d'un système pour changer la ville via ses coordonnées GPS (latitude/longitude)
 
 ## Installation
 
-1. `git clone https://github.com/madzadev/weather-app.git`
+```bash
+# Cloner et installer
+git clone https://github.com/Welle11/simplon-meteo-app.git
+cd simplon-meteo-app
+npm install
 
-2. `cd weather-app`
+# Lancer en local
+npm run dev
+```
 
-3. `npm install`
+**Note :** Nécessite Node.js v18+. Si erreur au lancement, utilisez `$env:NODE_OPTIONS="--openssl-legacy-provider"` (PowerShell) ou `export NODE_OPTIONS="--openssl-legacy-provider"` (Mac/Linux) avant `npm run dev`.
 
-4. Log-in to [Openweathermap.com](https://openweathermap.org/)
+## Configuration
 
-5. Create an API key
+Pour modifier la ville affichée, éditez le fichier `config.json` à la racine :
 
-6. `cp .env.example .env.local`
+```json
+{
+  "city": {
+    "name": "Nantes",
+    "latitude": 47.2184,
+    "longitude": -1.5536
+  }
+}
+```
 
-7. Paste API key for `OPENWEATHER_API_KEY`
+**Pour trouver les coordonnées GPS d'une ville :**
 
-8. `npm run dev`
+**Option 1 - Google Maps :**
 
-## Contributions
+1. Allez sur [Google Maps](https://www.google.com/maps)
+2. Cliquez droit sur la ville
+3. Copiez les coordonnées qui s'affichent (format : 47.26365980218024, -1.5685953056441557)
 
-Any feature requests and pull requests are welcome!
+**Option 2 - LatLong.net :**
+
+1. Allez sur [https://www.latlong.net/](https://www.latlong.net/)
+2. Recherchez votre ville
+3. Copiez les coordonnées affichées
+
+## Technologies
+
+- Next.js / React
+- Open-Meteo API
+- CSS Modules
+
+---
+
+**Auteur :** Welle11
 
 ## License
 
