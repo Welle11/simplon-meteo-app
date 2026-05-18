@@ -117,7 +117,8 @@ export default async function handler(req, res) {
       },
       visibility: 10000,
       dt: currentTime,
-      timezone: 3600,
+      //timezone: 3600 heure d'hiver
+      timezone: 7200, //heure d'été
       id: 0,
       cod: 200,
     };
