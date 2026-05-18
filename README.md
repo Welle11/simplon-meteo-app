@@ -10,8 +10,11 @@ Pour répondre aux besoins de l'entreprise de transport, j'ai effectué les chan
 - **Fixation de la ville** : Suppression du moteur de recherche pour un affichage fixe basé sur un fichier `config.json`
 - **Automatisation** : Ajout d'un rafraîchissement automatique des données toutes les heures
 - **Fichier de config** : Création d'un système pour changer la ville via ses coordonnées GPS (latitude/longitude)
+- **Conteneurisation** : Ajout de Docker pour faciliter le déploiement et garantir la portabilité
 
 ## Installation
+
+### Option 1 : Lancement local (développement)
 
 ```bash
 # Cloner et installer
@@ -24,6 +27,23 @@ npm run dev
 ```
 
 **Note :** Nécessite Node.js v18+. Si erreur au lancement, utilisez `$env:NODE_OPTIONS="--openssl-legacy-provider"` (PowerShell) ou `export NODE_OPTIONS="--openssl-legacy-provider"` (Mac/Linux) avant `npm run dev`.
+
+### Option 2 : Lancement avec Docker (recommandé)
+
+```bash
+# Prérequis : Docker Desktop installé et lancé
+
+# Cloner le projet
+git clone https://github.com/Welle11/simplon-meteo-app.git
+cd simplon-meteo-app
+
+# Lancer l'application avec Docker
+docker-compose up --build
+
+# L'application est accessible sur http://localhost:3000
+
+
+```
 
 ## Configuration
 
@@ -55,9 +75,12 @@ Pour modifier la ville affichée, éditez le fichier `config.json` à la racine 
 
 ## Technologies
 
-- Next.js / React
+- Next.js 14 / React 18
 - Open-Meteo API
 - CSS Modules
+- Docker / Docker Compose
+- Node.js
+- Git / GitHub
 
 ---
 
